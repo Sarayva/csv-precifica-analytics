@@ -1,0 +1,14 @@
+services:
+  csv-precifica:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: csv-precifica-analytics
+    ports:
+      - "3000:3000"
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    volumes:
+      - ./tudo.csv:/app/tudo.csv:ro

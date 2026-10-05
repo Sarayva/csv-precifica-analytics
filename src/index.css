@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* FLUENT DESIGN (WINDOWS 11) SEMANTIC DESIGN SYSTEM TOKENS */
+:root, html.dark {
+  --bg-base: #202020;               /* Windows 11 Dark Charcoal Background */
+  --bg-surface: #2B2B2B;            /* Windows 11 Fluent Card Surface */
+  --bg-surface-secondary: #323232;  /* Windows 11 Secondary Surface / Inputs */
+  --bg-surface-tertiary: #3A3A3A;   /* Windows 11 Elevated Control Surface */
+  
+  --border-default: #3F3F3F;        /* Windows 11 Control Border */
+  --border-subtle: rgba(255, 255, 255, 0.08); /* Windows 11 Subtle Border */
+
+  --text-primary: #FFFFFF;          /* High contrast primary text */
+  --text-secondary: #D6D6D6;        /* Secondary label text */
+  --text-tertiary: #A0A0A0;         /* Muted subtext / placeholders */
+
+  --accent-primary: #60CDFF;        /* Windows 11 Fluent Accent Blue */
+  --accent-hover: #7AD7FF;          /* Windows 11 Accent Hover */
+  --accent-active: #45B8E8;         /* Windows 11 Accent Active */
+  --focus-ring: #60CDFF;            /* Focus Ring */
+
+  --brand-gold: #FCA311;            /* Brand Accent Gold */
+  --brand-gold-hover: #E89200;      /* Brand Accent Gold Hover */
+
+  --color-success: #6CCB5F;         /* Windows 11 Dark Success Green */
+  --color-warning: #FCE100;         /* Windows 11 Dark Warning Yellow */
+  --color-error: #FF99A4;           /* Windows 11 Dark Error Red */
+  --color-info: #60CDFF;            /* Windows 11 Info Blue */
+
+  --color-disabled: #555555;        /* Disabled control background */
+  --color-overlay: rgba(0, 0, 0, 0.6); /* Modal backdrop overlay */
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.35); /* Card elevation shadow */
+}
+
+html.light {
+  --bg-base: #F3F3F3;               /* Windows 11 Light Platinum Base */
+  --bg-surface: #FFFFFF;            /* Windows 11 Fluent White Surface */
+  --bg-surface-secondary: #FAFAFA;  /* Windows 11 Secondary Light Surface */
+  --bg-surface-tertiary: #F0F0F0;   /* Windows 11 Elevated Control Surface */
+  
+  --border-default: #E5E5E5;        /* Windows 11 Light Border */
+  --border-subtle: rgba(0, 0, 0, 0.08); /* Subtle Light Divider */
+
+  --text-primary: #1A1A1A;          /* High contrast primary text */
+  --text-secondary: #5D5D5D;        /* Secondary label text */
+  --text-tertiary: #707070;         /* Muted subtext / placeholders */
+
+  --accent-primary: #0067C0;        /* Windows 11 Fluent Light Accent Blue */
+  --accent-hover: #005FB8;          /* Windows 11 Accent Light Hover */
+  --accent-active: #004F9E;         /* Windows 11 Accent Light Active */
+  --focus-ring: #0067C0;            /* Focus Ring */
+
+  --brand-gold: #D97706;            /* Brand Accent Gold for light mode */
+  --brand-gold-hover: #B45309;      /* Brand Accent Gold Hover */
+
+  --color-success: #107C10;         /* Windows 11 Light Success Green */
+  --color-warning: #9D5D00;         /* Windows 11 Light Warning Yellow */
+  --color-error: #C42B1C;           /* Windows 11 Light Error Red */
+  --color-info: #0067C0;            /* Windows 11 Info Blue */
+
+  --color-disabled: #E0E0E0;        /* Disabled control background */
+  --color-overlay: rgba(0, 0, 0, 0.4); /* Modal backdrop overlay */
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06); /* Card elevation shadow */
+}
+
+body {
+  font-family: 'Segoe UI Variable Display', 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Windows 11 Fluent Surface & Card Utility */
+.glass-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-card);
+  color: var(--text-primary);
+  border-radius: 12px;
+}
+
+/* Windows 11 Fluent Input Control */
+.glass-input {
+  background-color: var(--bg-surface-secondary);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  transition: all 0.15s ease-in-out;
+}
+
+.glass-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.glass-input:hover {
+  border-color: var(--accent-primary);
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.glass-input:disabled {
+  background-color: var(--color-disabled);
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+/* Fluent Action Buttons */
+.btn-accent {
+  background-color: var(--accent-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-accent:active {
+  background-color: var(--accent-active);
+}
+
+.btn-brand {
+  background-color: var(--brand-gold);
+  color: #000000;
+  font-weight: 700;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-brand:hover {
+  background-color: var(--brand-gold-hover);
+}
+
+/* Text Gradients */
+.gold-gradient-text {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--brand-gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Windows 11 Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
