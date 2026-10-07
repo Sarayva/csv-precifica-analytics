@@ -74,7 +74,7 @@ export default function App() {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch('/api/default-csv');
+      const response = await fetch(`${import.meta.env.BASE_URL}api/default-csv`);
       if (!response.ok) {
         throw new Error('Não foi possível carregar o CSV padrão.');
       }
