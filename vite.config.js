@@ -10,7 +10,8 @@ function serveWorkspaceCsvPlugin() {
     name: 'serve-workspace-csv',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
-        if (req.url === '/api/default-csv' || req.url.startsWith('/api/default-csv?')) {
+        const urlPath = (req.url || '').split('?')[0];
+        if (urlPath.endsWith('/api/default-csv')) {
           let csvPath = path.resolve(process.cwd(), 'tudo.csv');
           let fileName = 'tudo.csv';
           if (!fs.existsSync(csvPath)) {
@@ -33,6 +34,8 @@ function serveWorkspaceCsvPlugin() {
 }
 
 export default defineConfig({
+  // No GitHub Pages o site fica em /csv-precifica-analytics/; local e Docker continuam na raiz
+  base: process.env.GITHUB_PAGES === 'true' ? '/csv-precifica-analytics/' : '/',
   plugins: [react(), tailwindcss(), serveWorkspaceCsvPlugin()],
   server: {
     port: 3000,
