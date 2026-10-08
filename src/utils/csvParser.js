@@ -78,11 +78,13 @@ export function normalizeLinha(rawLinha, category) {
 export function lookupLinha(code, ean, category) {
   const { codeToLinha = {}, eanToLinha = {} } = arvoreData || {};
 
+  // EAN tem prioridade: o "Código" do CSV nem sempre corresponde ao CódigoProduto da árvore
+  // (ex: cód 4521 no CSV é Zolpidem, mas na árvore 4521 é um item de PERFUMARIA).
   let raw = null;
-  if (code && codeToLinha[code]) {
-    raw = codeToLinha[code];
-  } else if (ean && eanToLinha[ean]) {
+  if (ean && eanToLinha[ean]) {
     raw = eanToLinha[ean];
+  } else if (code && codeToLinha[code]) {
+    raw = codeToLinha[code];
   }
 
   return normalizeLinha(raw, category);
